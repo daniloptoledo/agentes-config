@@ -1,0 +1,4 @@
+
+# agentes (adicionado pelo init-projeto.sh)
+.ai-memory/last_fail.log
+.env
