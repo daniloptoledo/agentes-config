@@ -32,7 +32,7 @@ flowchart TB
 | Global | `global/AGENTS.md` | Regras de tudo: Git com aprovação, segredos, testes, anti-alucinação |
 | Global | `skills/*/SKILL.md` | Receitas: iniciar tarefa, rodar testes, revisão do Codex, encerrar sessão, auditoria de arquitetura, preparar PR |
 | Global | `scripts/run_quiet.py` | Roda testes e mostra só o resumo ou o erro |
-| Global | `global/claude-settings.json` | **Trava técnica**: Claude Code sempre pede confirmação para commit, push, merge, PR e deploy (mesmo em auto mode); bloqueia force push e leitura de `.env` |
+| Global | `global/claude-settings.json` | **Trava técnica**: Claude Code sempre pede confirmação para commit, push, merge, PR e deploy (mesmo em auto mode); bloqueia force push e leitura de `.env` com segredo (`.env`, `.env.local`, `.env.production`...), mas libera o `.env.example` |
 | Projeto | `AGENTS.md` | O que é específico daquele projeto (stack, riscos, comandos) |
 | Projeto | `CLAUDE.md` | Faz o Claude Code ler o `AGENTS.md` |
 | Projeto | `.ai-memory/HANDOFF.md` | Onde a última IA parou (≤ 15 linhas) |
