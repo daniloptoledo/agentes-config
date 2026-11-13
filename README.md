@@ -19,7 +19,7 @@ flowchart TB
         M[".ai-memory/\nHANDOFF (onde paramos)\nKNOWLEDGE_GRAPH (decisões)"]
     end
     C["Claude Code\n(implementa)"]
-    D["Codex\n(revisa via MCP)"]
+    D["Codex\n(revisa via plugin /codex:review)"]
     H["Danilo\n(aprova commit/push)"]
     G --> C & D
     C <--> P
@@ -65,6 +65,17 @@ O que ele faz: aplica as travas em `~/.claude/settings.json` (com backup, sem ap
 Cria `AGENTS.md`, `CLAUDE.md` e `.ai-memory/` e acrescenta linhas no `.gitignore`.
 **Nunca sobrescreve** o que já existe e **não faz commit**.
 
+## Codex dentro do Claude Code (1 vez por máquina)
+
+No Claude Code, um comando por vez:
+```
+/plugin marketplace add openai/codex-plugin-cc
+/plugin install codex@openai-codex      (escolher: user scope)
+/reload-plugins
+/codex:setup                            (deve mostrar ready: true)
+```
+Revisão sob demanda: `/codex:review`. Não ligar o `--enable-review-gate` (gasta cota em toda sessão).
+
 ## Prompts do dia a dia
 
 **Abrir uma sessão:**
@@ -87,7 +98,7 @@ Use a skill encerrar-sessao.
 
 | Item dele | Decisão |
 |---|---|
-| Servidor MCP próprio chamando Codex com `danger-full-access` | Fora: dá acesso total ao computador; o Codex entra via MCP oficial, em read-only |
+| Servidor MCP próprio chamando Codex com `danger-full-access` | Fora: dá acesso total ao computador; o Codex entra pelo plugin oficial da OpenAI (`openai/codex-plugin-cc`) |
 | Modelos locais 32B (Ollama) | Fora por enquanto: hardware dele é outro e ele mesmo desaconselhou o Ollama |
 | Auto-fix no CI com API paga | Fora: custo e commit sem revisão |
 | REPO_MAP gerado por script | Depois, quando algum projeto tiver dezenas de arquivos |

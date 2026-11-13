@@ -5,12 +5,13 @@ description: Use antes de qualquer commit, ou depois de 2 tentativas de correç�
 
 # Revisão pelo Codex
 
-Pré-requisito: Codex ligado ao Claude Code via MCP (`claude mcp list` mostra `codex`).
+Pré-requisito: plugin oficial `openai/codex-plugin-cc` instalado (`/codex:setup` mostra `ready: true`).
+A revisão obrigatória automática (`--enable-review-gate`) fica DESLIGADA: revisar sob demanda economiza cota.
 
 1. Testes e lint passando (skill `rodar-testes`), salvo se o objetivo for investigar uma falha.
-2. Chamar a ferramenta do Codex com **sandbox read-only** e este pedido:
-   "Revise o `git diff` atual. Liste: bugs, riscos de segurança, casos de borda sem teste e
-   código desnecessário. Cite arquivo:linha. Não altere nenhum arquivo."
+2. Pedir ao Danilo que rode `/codex:review` (revisa as mudanças não commitadas) — ou, se ele
+   autorizar, rodar o comando. Foco pedido: bugs, riscos de segurança, casos de borda sem teste,
+   código desnecessário, citando arquivo:linha. O Codex não deve alterar arquivos.
 3. Para cada achado: corrigir, ou registrar por que discorda.
 4. Achado de segurança não resolvido → PARE e avise o Danilo.
 
