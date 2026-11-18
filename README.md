@@ -5,6 +5,17 @@ todos os meus projetos, sem perder contexto e sem mexer no que não devem.
 Inspirado no repositório do Vitor Góngora, adaptado: sem acesso total à máquina, sem API paga,
 com aprovação humana para todo commit e push.
 
+> **O que é este repositório:** o kit que eu uso em todos os meus projetos para trabalhar com agentes de IA
+> com segurança: um agente implementa, outro revisa, e nada vai para o Git sem eu revisar e autorizar.
+> É público para mostrar o processo; qualquer pessoa pode copiar e adaptar. Troque os caminhos
+> (`~/projetos/...`) e o nome do responsável nas regras pelos seus.
+
+**Destaques**
+- **Human-in-the-loop no Git:** commit, push, merge e deploy pedem confirmação; `push --force` e leitura de `.env` são bloqueados.
+- **Memória entre sessões:** `.ai-memory/HANDOFF.md` (onde paramos) e `KNOWLEDGE_GRAPH.md` (decisões), para trocar de agente sem perder contexto.
+- **Revisão cruzada:** o Claude Code implementa e o Codex revisa pelo plugin oficial (`/codex:review`).
+- **Skills prontas:** iniciar tarefa, rodar testes, revisão, encerrar sessão, auditoria de arquitetura e preparar PR.
+
 ## Como funciona
 
 ```mermaid
